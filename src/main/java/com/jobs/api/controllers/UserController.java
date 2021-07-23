@@ -2,6 +2,7 @@ package com.jobs.api.controllers;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ public class UserController{
     @Autowired
     private UserRepository repository;
 
+    @CrossOrigin(origins = "/**")
     @GetMapping("/user")
 	public String listUsersById(@RequestParam(value="id") String id) throws JSONException{
         JSONObject jsonResponse = new JSONObject();
@@ -26,7 +28,7 @@ public class UserController{
         
 		return jsonResponse.toString();
 	}
-
+    @CrossOrigin(origins = "/**")
     @PostMapping("/user")
 	public String createUser(@RequestBody String resquestBody) throws JSONException{
         JSONObject jsonResponse = new JSONObject();
